@@ -557,7 +557,7 @@ void main() {
 ### arithmetic
 <details><summary></summary>
 
-* post-increment i++ returns current value then increments
+* post-increment `i++` returns current value then increments
     ```java
     int i = 5;
     System.out.println(i++);   // prints 5
@@ -590,7 +590,7 @@ void main() {
         i += 1;       // same effect
         ++i;          // same effect (pre-increment)
         ```
-* pre-increment ++i increments then returns new value
+* pre-increment `++i` increments then returns new value
     ```java
     int x = 3;
     int y = ++x;     // x becomes 4 first, then y gets 4
@@ -599,7 +599,29 @@ void main() {
     ```
 * rounding via `Math.round()` function
     * `float` -> `int` (both are 32 bit numbers)
-    a* `double` -> `long` (both are 64 bit nubmers)
+    * `double` -> `long` (both are 64 bit nubmers)
+
+| Method                              | Description                                                  | Return Type   | Example & Result                                                                 |
+|-------------------------------------|--------------------------------------------------------------|---------------|----------------------------------------------------------------------------------|
+| `abs(x)`                            | Absolute (non-negative) value                                | same as x     | `Math.abs(-7.89)` → `7.89`                                                       |
+| `max(a, b)` / `min(a, b)`           | Larger / smaller of two values                               | same as args  | `Math.max(10, 25)` → `25`<br>`Math.min(10, 25)` → `10`                           |
+| `pow(a, b)`                         | a raised to the power b (aᵇ)                                 | double        | `Math.pow(2, 10)` → `1024.0`                                                     |
+| `sqrt(x)`                           | Square root of x                                             | double        | `Math.sqrt(144)` → `12.0`                                                        |
+| `cbrt(x)`                           | Cube root of x                                               | double        | `Math.cbrt(27)` → `3.0`                                                          |
+| `sin(x)`, `cos(x)`, `tan(x)`        | Sine, cosine, tangent (x in radians)                         | double        | `Math.sin(Math.PI / 2)` → `1.0`<br>`Math.cos(Math.PI)` → `-1.0`                  |
+| `asin(x)`, `acos(x)`, `atan(x)`     | Inverse trigonometric functions (return radians)             | double        | `Math.asin(1.0)` → `1.5708...` (π/2)<br>`Math.acos(-1.0)` → `3.14159...` (π)     |
+| `atan2(y, x)`                       | Angle (in radians) from positive x-axis to point (x,y)       | double        | `Math.atan2(1, 1)` → `0.785398...` (π/4 rad, 45°)                                |
+| `toRadians(deg)` / `toDegrees(rad)` | Convert degrees ↔ radians                                    | double        | `Math.toRadians(90)` → `1.5708...`<br>`Math.toDegrees(Math.PI / 2)` → `90.0`     |
+| `log(x)`                            | Natural logarithm (base e)                                   | double        | `Math.log(Math.E)` → `1.0`                                                       |
+| `log10(x)`                          | Base-10 logarithm                                            | double        | `Math.log10(1000)` → `3.0`                                                       |
+| `exp(x)`                            | e raised to the power x (eˣ)                                 | double        | `Math.exp(1)` → `2.71828...` (≈ e)                                               |
+| `floor(x)` / `ceil(x)`              | Round down / round up to nearest integer                     | double        | `Math.floor(4.7)` → `4.0`<br>`Math.ceil(4.7)` → `5.0`                            |
+| `round(x)`                          | Round to nearest integer (long when input is double)         | long / int    | `Math.round(4.6)` → `5`<br>`Math.round(4.4)` → `4`                               |
+| `rint(x)`                           | Round to nearest integer (returns double)                    | double        | `Math.rint(4.6)` → `5.0`<br>`Math.rint(4.5)` → `4.0` (rounds .5 to even)         |
+| `random()`                          | Pseudorandom value ∈ [0.0, 1.0)                              | double        | `Math.random() * 100` → e.g. `42.735...` (range 0–99.999...)                     |
+| `hypot(x, y)`                       | √(x² + y²) — accurate hypotenuse                             | double        | `Math.hypot(3, 4)` → `5.0`                                                       |
+| `signum(x)`                         | Sign of x: -1.0, 0.0, or 1.0                                 | double        | `Math.signum(-42.5)` → `-1.0`<br>`Math.signum(0.0)` → `0.0`                      |
+| `copySign(x, y)`                    | Magnitude of x with sign of y                                | same as x     | `Math.copySign(10.0, -3.2)` → `-10.0`                                            |
 </details>
 
 ***
