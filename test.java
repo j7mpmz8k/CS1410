@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class test {
     public static void main(String[] args) {
-        System.out.print("Print 10 numbers: ");
+        System.out.print("Enter 10 numbers: ");
         Scanner inputNumbers = new Scanner(System.in);
         int[] numbersTen = new int[10];
         for (int i = 0; i < 10; i++) {
@@ -20,4 +20,4 @@ public class test {
         }
         System.out.println();
     }
-}import java.util.Scanner;
+}
