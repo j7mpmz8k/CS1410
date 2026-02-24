@@ -57,14 +57,14 @@ public class GregorianDate {
     }
     public void printShortDate() {
         // mm/dd/yyyy format
-        System.out.printf("%02d/%02d/%04d\n",
+        System.out.printf("%d/%d/%d",
             this.month,
             this.day,
             this.year);
     }
     public void printLongDate() {
         // Monthname dd, yyyy format
-        System.out.printf("%s %02d, %04d\n",
+        System.out.printf("%s %d, %d",
             this.getMonthName(),
             this.day,
             this.year);
