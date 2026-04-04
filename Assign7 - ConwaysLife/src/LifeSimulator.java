@@ -4,7 +4,7 @@ public class LifeSimulator {
     private int sizeX;
     private int sizeY;
 
-    public LifeSimulator(int sizeY, int sizeX) {
+    public LifeSimulator(int sizeX, int sizeY) {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         grid = new boolean[sizeY][sizeX];
@@ -19,7 +19,7 @@ public class LifeSimulator {
         return sizeY;
     }
 
-    public boolean getCell(int y, int x) {
+    public boolean getCell(int x, int y) {
         return grid[y][x];
     }
 
@@ -33,7 +33,7 @@ public class LifeSimulator {
                 if (isOutOfBounds(patternY, patternX)) {
                     break;
                 }
-                grid[startY+row][startX+col] = pattern.getCell(patternSizeX, patternSizeY);
+                grid[startY+row][startX+col] = pattern.getCell(patternX, patternY);
             }
         }
     }
