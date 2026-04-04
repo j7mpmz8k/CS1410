@@ -17,7 +17,7 @@ public class ConwaysLife {
             LifeSimulator simulation = new LifeSimulator(SIZE_X, SIZE_Y);
             simulation.insertPattern(new PatternAcorn(), 15, 40);
 
-            // simulation.insertPattern(new PatternBlock(), 25, 25);
+            simulation.insertPattern(new PatternBlock(), 25, 25);
             simulation.insertPattern(new PatternBlock(), 5, 25);
             simulation.insertPattern(new PatternBlock(), 25, 5);
             simulation.insertPattern(new PatternBlock(), 5, 5);
@@ -59,7 +59,7 @@ public class ConwaysLife {
         Rectangle rBackground = new Rectangle(BOUNDARY_LEFT, BOUNDARY_TOP,AREA_SIZE, AREA_SIZE);
         graphics.draw(rBackground, new Color(0, 0, 0.25f));
 
-        // Not very interesting, but showing how to draw a cell at a specific simulation x, y location
+
         int colCount = simulation.getSizeX();
         int rowCount = simulation.getSizeY();
         for (int row = 0; row < rowCount; row++) {

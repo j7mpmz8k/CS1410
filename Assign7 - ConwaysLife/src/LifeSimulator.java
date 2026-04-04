@@ -62,23 +62,21 @@ public class LifeSimulator {
 
     private int getNeighbors(int row, int col) {
         int neighbors = 0;
-        int[] topLeft = {row - 1, col - 1};
-        int[] top = {row - 1, col};
-        int[] topRight = {row - 1, col + 1};
-        int[] left = {row, col - 1};
-        int[] right = {row, col + 1};
-        int[] bottomLeft = {row + 1, col - 1};
-        int[] bottom = {row + 1, col};
-        int[] bottomRight = {row + 1, col + 1};
-        int[][] cellsToCheck = {topLeft, top, topRight, left, right, bottomLeft, bottom, bottomRight};
-        for (int[] cell : cellsToCheck) {
-            if (isOutOfBounds(cell[0], cell[1])) {
-                continue;
-            }
-            if (grid[cell[0]][cell[1]]) {
-                neighbors++;
+        
+        //checks all cells from top left to bottom right other than its own cell
+        for (int neighborRow = row - 1; neighborRow <= row + 1; neighborRow++) {
+            for (int neighborCol = col - 1; neighborCol <= col + 1; neighborCol++) {
+                
+                if (neighborRow == row && neighborCol == col) {
+                    continue;//skips if checking itself
+                } else if (isOutOfBounds(neighborRow, neighborCol)) {
+                    continue;//skips if outside of simulation
+                } else if (grid[neighborRow][neighborCol]) {
+                    neighbors++;//increments if neighbor is alive
+                }
             }
         }
+        
         return neighbors;    
     }
     private boolean isOutOfBounds(int row, int col) {
