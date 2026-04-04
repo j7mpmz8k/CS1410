@@ -19,19 +19,23 @@ public class LifeSimulator {
     }
 
     public boolean getCell(int x, int y) {
-        return grid[y][x];
+        return grid[y][x];//checks if cell in grid is alive/dead
     }
 
     public void insertPattern(Pattern pattern, int startX, int startY) {
         int patternSizeX = pattern.getSizeX();
         int patternSizeY = pattern.getSizeY();
+
+        //loops through each cell in pattern
         for (int row = 0; row < patternSizeY; row++) {
             for (int col = 0; col < patternSizeX; col++) {
+                //pattern is location on grid is top left of pattern array
                 int patternY = startY + row;
                 int patternX = startX + col;
                 if (isOutOfBounds(patternY, patternX)) {
                     continue;
                 }
+                //adds only alive cells in pattern to grid
                 grid[startY+row][startX+col] = pattern.getCell(col, row);
             }
         }
@@ -39,7 +43,11 @@ public class LifeSimulator {
 
     public void update() {
         int neighbors;
+        
+        //wipes newGrid for next buffer swap
         newGrid = new boolean[this.sizeY][this.sizeX];
+        
+        //checks conditions for each cell if will be alive/dead in new grid
         for (int row = 0; row < this.sizeY; row++) {
             for (int col = 0; col < this.sizeX; col++) {
                 neighbors = getNeighbors(row, col);
@@ -51,13 +59,13 @@ public class LifeSimulator {
                 boolean continuesCase = alive && (neighbors == 2 || neighbors == 3);
                 
                 if (underPopulationCase || overPopulationCase) {
-                    newGrid[row][col] = false;
+                    newGrid[row][col] = false;//dead cells in new grid
                 } else if (revivedCase || continuesCase) {
-                    newGrid[row][col] = true;
+                    newGrid[row][col] = true;//alive cells in new grid
                 }
             }
         }
-        grid = newGrid;
+        grid = newGrid;//swaps new grid with current
     }
 
     private int getNeighbors(int row, int col) {

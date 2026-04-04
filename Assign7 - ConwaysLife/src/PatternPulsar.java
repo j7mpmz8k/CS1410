@@ -19,7 +19,7 @@ public class PatternPulsar extends Pattern {
 
     @Override
     public int getSizeX() {
-        return pulsar[0].length;
+        return pulsar[0].length;//assumes rectangular 2D array, does not check for ragged array
     }
 
     @Override

@@ -8,7 +8,7 @@ public class PatternGlider extends Pattern {
                                                       
     @Override
     public int getSizeX() {
-        return glider[0].length;
+        return glider[0].length;//assumes rectangular 2D array, does not check for ragged array
     }
 
     @Override

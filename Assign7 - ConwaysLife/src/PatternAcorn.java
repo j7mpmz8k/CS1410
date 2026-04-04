@@ -7,7 +7,7 @@ public class PatternAcorn extends Pattern {
 
     @Override
     public int getSizeX() {
-        return acorn[0].length;
+        return acorn[0].length;//assumes rectangular 2D array, does not check for ragged array
     }
 
     @Override

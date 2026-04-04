@@ -56,16 +56,17 @@ public class ConwaysLife {
 
         graphics.begin();
 
+        //draws simulation background
         Rectangle rBackground = new Rectangle(BOUNDARY_LEFT, BOUNDARY_TOP,AREA_SIZE, AREA_SIZE);
         graphics.draw(rBackground, new Color(0, 0, 0.25f));
 
+        //loops through each cell in simulation grid
+        for (int row = 0; row < simulation.getSizeY(); row++) {
+            for (int col = 0; col < simulation.getSizeX(); col++) {
 
-        int colCount = simulation.getSizeX();
-        int rowCount = simulation.getSizeY();
-        for (int row = 0; row < rowCount; row++) {
-            for (int col = 0; col < colCount; col++) {
+                //draws each alive cells
                 if (simulation.getCell(col, row)) {
-                    Rectangle r = new Rectangle(
+                    Rectangle r = new Rectangle(//must reallocate instead of moving Rectangle location due to graphics implimentation
                         BOUNDARY_LEFT + CELL_SIZE * col,
                         BOUNDARY_TOP + CELL_SIZE * row,
                         CELL_SIZE, CELL_SIZE);

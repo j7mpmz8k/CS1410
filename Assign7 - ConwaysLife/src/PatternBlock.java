@@ -7,7 +7,7 @@ public class PatternBlock extends Pattern {
 
     @Override
     public int getSizeX() {
-        return block[0].length;
+        return block[0].length;//assumes rectangular 2D array, does not check for ragged array
     }
 
     @Override

@@ -7,7 +7,7 @@ public class PatternBlinker extends Pattern {
 
     @Override
     public int getSizeX() {
-        return blinker[0].length;
+        return blinker[0].length;//assumes rectangular 2D array, does not check for ragged array
     }
 
     @Override
