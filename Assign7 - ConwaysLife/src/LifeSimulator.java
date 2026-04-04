@@ -30,7 +30,6 @@ public class LifeSimulator {
             for (int col = 0; col < patternSizeX; col++) {
                 int patternY = startY + row;
                 int patternX = startX + col;
-                if (patternX >= 0 && patternX <= patternSizeX && patternY >= 0 && patternY <= patternSizeY)
                 if (isOutOfBounds(patternY, patternX)) {
                     break;
                 }

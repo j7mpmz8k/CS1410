@@ -15,6 +15,7 @@ public class ConwaysLife {
             Texture texSquare = new Texture("resources/images/square-outline.png");
 
             LifeSimulator simulation = new LifeSimulator(SIZE_X, SIZE_Y);
+            simulation.insertPattern(new PatternAcorn(), 0, 0);
             simulation.insertPattern(new PatternBlock(), 0, 0);
             simulation.insertPattern(new PatternBlinker(), 0, 10);
             simulation.insertPattern(new PatternGlider(), 15, 15);

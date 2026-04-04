@@ -1,4 +1,7 @@
 public class PatternBlock extends Pattern {
+
+    boolean pattern  = 
+
     @Override
     public int getSizeX() {
         return 0; // TODO: Implement
