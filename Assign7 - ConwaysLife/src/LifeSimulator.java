@@ -8,7 +8,6 @@ public class LifeSimulator {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         grid = new boolean[sizeY][sizeX];
-        newGrid = new boolean[sizeY][sizeX];
     }
 
     public int getSizeX() {
@@ -31,25 +30,26 @@ public class LifeSimulator {
                 int patternY = startY + row;
                 int patternX = startX + col;
                 if (isOutOfBounds(patternY, patternX)) {
-                    break;
+                    continue;
                 }
-                grid[startY+row][startX+col] = pattern.getCell(patternX, patternY);
+                grid[startY+row][startX+col] = pattern.getCell(col, row);
             }
         }
     }
 
     public void update() {
-        int neighbours;
+        int neighbors;
+        newGrid = new boolean[this.sizeY][this.sizeX];
         for (int row = 0; row < this.sizeY; row++) {
             for (int col = 0; col < this.sizeX; col++) {
-                neighbours = getNeighbors(row, col);
+                neighbors = getNeighbors(row, col);
 
                 boolean alive = grid[row][col];
-                boolean underPopulationCase = alive && neighbours < 2;
-                boolean overPopulationCase = alive && neighbours > 3;
-                boolean revivedCase = !alive && neighbours == 3;
-                boolean continuesCase = alive && (neighbours == 2 || neighbours == 3);
-
+                boolean underPopulationCase = alive && neighbors < 2;
+                boolean overPopulationCase = alive && neighbors > 3;
+                boolean revivedCase = !alive && neighbors == 3;
+                boolean continuesCase = alive && (neighbors == 2 || neighbors == 3);
+                
                 if (underPopulationCase || overPopulationCase) {
                     newGrid[row][col] = false;
                 } else if (revivedCase || continuesCase) {
@@ -61,7 +61,7 @@ public class LifeSimulator {
     }
 
     private int getNeighbors(int row, int col) {
-        int neighbours = 0;
+        int neighbors = 0;
         int[] topLeft = {row - 1, col - 1};
         int[] top = {row - 1, col};
         int[] topRight = {row - 1, col + 1};
@@ -76,10 +76,10 @@ public class LifeSimulator {
                 continue;
             }
             if (grid[cell[0]][cell[1]]) {
-                neighbours++;
+                neighbors++;
             }
         }
-        return neighbours;    
+        return neighbors;    
     }
     private boolean isOutOfBounds(int row, int col) {
         return (row < 0 || row >= this.sizeY || col < 0 || col >= this.sizeX);
