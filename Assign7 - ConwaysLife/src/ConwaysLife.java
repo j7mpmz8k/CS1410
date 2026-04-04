@@ -15,10 +15,19 @@ public class ConwaysLife {
             Texture texSquare = new Texture("resources/images/square-outline.png");
 
             LifeSimulator simulation = new LifeSimulator(SIZE_X, SIZE_Y);
-            simulation.insertPattern(new PatternAcorn(), 0, 0);
-            simulation.insertPattern(new PatternBlock(), 0, 0);
-            simulation.insertPattern(new PatternBlinker(), 0, 10);
-            simulation.insertPattern(new PatternGlider(), 15, 15);
+            simulation.insertPattern(new PatternAcorn(), 15, 40);
+
+            // simulation.insertPattern(new PatternBlock(), 25, 25);
+            simulation.insertPattern(new PatternBlock(), 5, 25);
+            simulation.insertPattern(new PatternBlock(), 25, 5);
+            simulation.insertPattern(new PatternBlock(), 5, 5);
+
+            simulation.insertPattern(new PatternBlinker(), 55, 69);
+
+            simulation.insertPattern(new PatternGlider(), 35, 35);
+
+            simulation.insertPattern(new PatternPulsar(), 50, 50);
+            simulation.insertPattern(new PatternPulsar(), 65, 15);
 
             boolean done = false;
             while (!done) {

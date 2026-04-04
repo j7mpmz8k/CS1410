@@ -1,19 +1,22 @@
 public class PatternBlock extends Pattern {
 
-    boolean pattern  = 
+    boolean[][] block = {
+            {true, true},
+            {true, true}
+        };
 
     @Override
     public int getSizeX() {
-        return 0; // TODO: Implement
+        return block[0].length;
     }
 
     @Override
     public int getSizeY() {
-        return 0; // TODO: Implement
+        return block.length;
     }
 
     @Override
     public boolean getCell(int x, int y) {
-        return false; // TODO: Implement
+        return block[y][x];
     }
 }

@@ -1,16 +1,22 @@
 public class PatternBlinker extends Pattern {
+    boolean[][] blinker = {
+            {true},
+            {true},
+            {true}
+        };
+
     @Override
     public int getSizeX() {
-        return 0; // TODO: Implement
+        return blinker[0].length;
     }
 
     @Override
     public int getSizeY() {
-        return 0; // TODO: Implement
+        return blinker.length;
     }
 
     @Override
     public boolean getCell(int x, int y) {
-        return false; // TODO: Implement
+        return blinker[y][x];
     }
 }

@@ -1,16 +1,23 @@
 public class PatternGlider extends Pattern {
+
+    boolean[][] glider = {
+            {true, false, true},
+            {false, true, true},
+            {false, true, false}
+        };
+                                                      
     @Override
     public int getSizeX() {
-        return 0; // TODO: Implement
+        return glider[0].length;
     }
 
     @Override
     public int getSizeY() {
-        return 0; // TODO: Implement
+        return glider.length;
     }
 
     @Override
     public boolean getCell(int x, int y) {
-        return false; // TODO: Implement
+        return glider[y][x];
     }
 }
