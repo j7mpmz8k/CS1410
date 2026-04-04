@@ -14,12 +14,11 @@ public class ConwaysLife {
             graphics.initialize(Color.BLACK);
             Texture texSquare = new Texture("resources/images/square-outline.png");
 
-            //LifeSimulator simulation = new LifeSimulator(SIZE_X, SIZE_Y);
+            LifeSimulator simulation = new LifeSimulator(SIZE_X, SIZE_Y);
 
             boolean done = false;
             while (!done) {
-                //render(graphics, texSquare, simulation);
-                sampleRender(graphics, texSquare);
+                render(graphics, texSquare, simulation);
                 Thread.sleep(50);
                 //simulation.update();
 
@@ -35,7 +34,7 @@ public class ConwaysLife {
         }
     }
 
-    public static void sampleRender(Graphics2D graphics, Texture texSquare) {
+    public static void render(Graphics2D graphics, Texture texSquare, LifeSimulator simulation) {
         final float AREA_SIZE = 1.5f;
         final float CELL_SIZE = AREA_SIZE / SIZE_X;
         final float BOUNDARY_LEFT = -0.75f;

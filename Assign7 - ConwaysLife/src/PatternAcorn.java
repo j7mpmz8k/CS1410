@@ -1,4 +1,5 @@
 public class PatternAcorn extends Pattern {
+
     @Override
     public int getSizeX() {
         return 0; // TODO: Implement
