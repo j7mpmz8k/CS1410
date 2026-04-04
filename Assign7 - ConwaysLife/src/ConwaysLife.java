@@ -15,6 +15,9 @@ public class ConwaysLife {
             Texture texSquare = new Texture("resources/images/square-outline.png");
 
             LifeSimulator simulation = new LifeSimulator(SIZE_X, SIZE_Y);
+            simulation.insertPattern(new PatternBlock(), 0, 0);
+            simulation.insertPattern(new PatternBlinker(), 0, 10);
+            simulation.insertPattern(new PatternGlider(), 15, 15);
 
             boolean done = false;
             while (!done) {
@@ -47,13 +50,19 @@ public class ConwaysLife {
         graphics.draw(rBackground, new Color(0, 0, 0.25f));
 
         // Not very interesting, but showing how to draw a cell at a specific simulation x, y location
-        int cellX = 10;
-        int cellY = 10;
-        Rectangle r = new Rectangle(
-                BOUNDARY_LEFT + CELL_SIZE * cellX,
-                BOUNDARY_TOP + CELL_SIZE * cellY,
-                CELL_SIZE, CELL_SIZE);
-        graphics.draw(texSquare, r, Color.WHITE);
+        int colCount = simulation.getSizeX();
+        int rowCount = simulation.getSizeY();
+        for (int row = 0; row < rowCount; row++) {
+            for (int col = 0; col < colCount; col++) {
+                if (simulation.getCell(col, row)) {
+                    Rectangle r = new Rectangle(
+                        BOUNDARY_LEFT + CELL_SIZE * col,
+                        BOUNDARY_TOP + CELL_SIZE * row,
+                        CELL_SIZE, CELL_SIZE);
+                    graphics.draw(texSquare, r, Color.WHITE);
+                }
+            }
+        }
 
         graphics.end();
     }
