@@ -20,7 +20,7 @@ public class ConwaysLife {
             while (!done) {
                 render(graphics, texSquare, simulation);
                 Thread.sleep(50);
-                //simulation.update();
+                simulation.update();
 
                 // Poll for window events: required in order for window, keyboard, etc events are captured.
                 glfwPollEvents();
@@ -33,6 +33,7 @@ public class ConwaysLife {
             System.out.println("Something bad happened: " + ex.getMessage());
         }
     }
+    
 
     public static void render(Graphics2D graphics, Texture texSquare, LifeSimulator simulation) {
         final float AREA_SIZE = 1.5f;

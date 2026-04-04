@@ -8,6 +8,7 @@ public class LifeSimulator {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         grid = new boolean[sizeY][sizeX];
+        newGrid = new boolean[sizeY][sizeX];
     }
 
     public int getSizeX() {
@@ -40,7 +41,6 @@ public class LifeSimulator {
 
     public void update() {
         int neighbours;
-        newGrid = new boolean[sizeY][sizeX];
         for (int row = 0; row < this.sizeY; row++) {
             for (int col = 0; col < this.sizeX; col++) {
                 neighbours = getNeighbors(row, col);
@@ -74,7 +74,7 @@ public class LifeSimulator {
         int[][] cellsToCheck = {topLeft, top, topRight, left, right, bottomLeft, bottom, bottomRight};
         for (int[] cell : cellsToCheck) {
             if (isOutOfBounds(cell[0], cell[1])) {
-                break;
+                continue;
             }
             if (grid[cell[0]][cell[1]]) {
                 neighbours++;
@@ -83,6 +83,6 @@ public class LifeSimulator {
         return neighbours;    
     }
     private boolean isOutOfBounds(int row, int col) {
-        return (row < 0 || row > this.sizeY || col < 0 || col > this.sizeX);
+        return (row < 0 || row >= this.sizeY || col < 0 || col >= this.sizeX);
     }
 }
