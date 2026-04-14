@@ -1,4 +1,9 @@
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class SpellChecker {
     public static void main(String[] args) {
 
@@ -75,8 +80,37 @@ public class SpellChecker {
      */
     public static BinarySearchTree<String> readDictionary() {
         BinarySearchTree<String> tree = new BinarySearchTree<>();
+        ArrayList<String> words = new ArrayList<>();
 
+        File file = new File("Dictionary.txt");
+        try (Scanner input = new Scanner(file)) {
+            while (input.hasNextLine()) {
+                String word = input.nextLine();
+                words.add(word.toLowerCase());
+            }
+        } catch (IOException ex) {
+            System.out.println("An error occurred trying to read the file: " + ex);
+        }
+
+        binaryInsert(words, 0, words.size() - 1, tree);
 
         return tree;
+    }
+    private static void binaryInsert(ArrayList<String> words, int left, int right, BinarySearchTree<String> tree) {
+        // inserts leaf nodes from left to right
+        if (left > right) {
+            return;
+        }
+
+        int mid = left + (right - left) / 2;
+
+        // insert mid
+        tree.insert(words.get(mid));
+
+        // left half
+        binaryInsert(words, left, mid - 1, tree);
+
+        // right half
+        binaryInsert(words, mid + 1, right, tree);
     }
 }
