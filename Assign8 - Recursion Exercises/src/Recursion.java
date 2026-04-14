@@ -110,10 +110,10 @@ public class Recursion {
         if (inBounds && image[row][col] == '*') {
             image[row][col] = organismID;
             //crawlers to uniquely label each cell of new organism
-            scanOrganism(image, row, col + 1, organismID);//right
-            scanOrganism(image, row + 1, col, organismID);//down
-            scanOrganism(image, row, col - 1, organismID);//left
-            scanOrganism(image, row - 1, col, organismID);//up
+            scanOrganism(image, row, col + 1, organismID);//seek right
+            scanOrganism(image, row + 1, col, organismID);//seek down
+            scanOrganism(image, row, col - 1, organismID);//seek left
+            scanOrganism(image, row - 1, col, organismID);//seek up
         }
     }
 }
