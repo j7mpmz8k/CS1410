@@ -1,10 +1,10 @@
-public class BinarySearchTree {
+public class BinarySearchTree<E extends Comparable<E>> {
     private class TreeNode {
-        int value;
+        E value;
         TreeNode left;
         TreeNode right;
 
-        public TreeNode(int value) {
+        public TreeNode(E value) {
             this.value = value;
         }
     }
@@ -15,15 +15,15 @@ public class BinarySearchTree {
         displayInOrder(root);
     }
 
-    public void remove(int value) {
+    public void remove(E value) {
         TreeNode parent = null;
         TreeNode node = root;
         boolean done = false;
         while (!done) {
-            if (node.value < value) {
+            if (node.value.compareTo(value) < 0) {
                 parent = node;
                 node = node.right;
-            } else if (node.value > value) {
+            } else if (node.value.compareTo(value) > 0) {
                 parent = node;
                 node = node.left;
             } else {
@@ -35,7 +35,7 @@ public class BinarySearchTree {
             if (parent == null) {
                 root = node.right;
             } else {
-                if (parent.value < value) {
+                if (parent.value.compareTo(value) < 0) {
                     parent.right = node.right;
                 } else {
                     parent.left = node.right;
@@ -65,7 +65,7 @@ public class BinarySearchTree {
         displayInOrder(node.right);
     }
 
-    public void insert(int value) {
+    public void insert(E value) {
         if (root == null) {
             root = new TreeNode(value);
         } else {
@@ -73,7 +73,7 @@ public class BinarySearchTree {
             TreeNode node = root;
             while (node != null) {
                 parent = node;
-                if (node.value < value) {
+                if (node.value.compareTo(value) < 0) {
                     node = node.right;
                 } else {
                     node = node.left;
@@ -81,7 +81,7 @@ public class BinarySearchTree {
             }
 
             TreeNode newNode = new TreeNode(value);
-            if (parent.value < value) {
+            if (parent.value.compareTo(value) < 0) {
                 parent.right = newNode;
             } else {
                 parent.left = newNode;
@@ -89,14 +89,14 @@ public class BinarySearchTree {
         }
     }
 
-    public boolean search(int value) {
+    public boolean search(E value) {
         boolean found = false;
         TreeNode node = root;
 
         while (!found && node != null) {
-            if (node.value == value) {
+            if (node.value.compareTo(value) == 0) {
                 found = true;
-            } else if (node.value < value) {
+            } else if (node.value.compareTo(value) < 0) {
                 node = node.right;
             } else {
                 node = node.left;
